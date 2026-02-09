@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- 
+DOCTYPE tells the browser:
+“This document uses HTML5.”
+
+Without it, browsers may enter “quirks mode”
+and behave unpredictably.
+-->
+
+<html lang="en">
+<!-- 
+The <html> element is the root of the document.
+
+lang="en" is an ATTRIBUTE
+- lang  → attribute name
+- "en"  → attribute value
+
+It helps:
+- Screen readers
+- Search engines
+- Translation tools
+-->
+
+<head>
+    <!-- 
+    The <head> contains METADATA
+    (data about the document, not visible on the page)
+    -->
+
+    <meta charset="UTF-8">
+    <!-- 
+    charset="UTF-8" defines character encoding.
+    It allows:
+    - English letters
+    - Emojis 😊
+    - African names
+    - Special symbols
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+    This makes the page responsive on phones and tablets.
+    -->
+
+    <title>HTML5 Semantic Elements – Teaching Demo</title>
+</head>
+
+<body>
+    <!-- 
+    Everything inside <body> is VISIBLE on the page
+    -->
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <!-- 
+        <header> represents introductory content.
+        Often contains:
+        - Logo
+        - Website title
+        - Navigation
+        -->
+
+        <h1>HTML5 Semantic Elements</h1>
+        <p>Learning how HTML gives meaning, not just layout.</p>
+
+        <!-- ============== NAVIGATION ============== -->
+        <nav>
+            <!-- 
+            <nav> is used for navigation links.
+            It tells browsers and screen readers:
+            “These links are for navigation”
+            -->
+
+            <ul>
+                <!-- 
+                <ul> = unordered list
+                <li> = list item
+                -->
+
+                <li><a href="#about">About</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+        <!-- 
+        <main> holds the PRIMARY content of the page.
+        There should be ONLY ONE <main> per page.
+        -->
+
+        <!-- ============== SECTION ============== -->
+        <section id="about">
+            <!-- 
+            <section> groups related content together.
+            It usually has a heading.
+            -->
+
+            <h2>What Are Semantic Elements?</h2>
+            <p>
+                Semantic elements clearly describe their meaning
+                to both the browser and the developer.
+            </p>
+
+            <p>
+                Examples:
+                &lt;header&gt;, &lt;main&gt;, &lt;article&gt;, &lt;footer&gt;
+            </p>
+        </section>
+
+        <!-- ============== ARTICLES ============== -->
+        <section id="articles">
+            <h2>Examples of Semantic Elements</h2>
+
+            <!-- ============== ARTICLE ============== -->
+            <article>
+                <!-- 
+                <article> represents self-contained content.
+                It can stand alone and still make sense.
+                -->
+
+                <h3>&lt;article&gt;</h3>
+                <p>
+                    Used for blog posts, news articles,
+                    forum posts, or independent content.
+                </p>
+            </article>
+
+            <article>
+                <h3>&lt;section&gt;</h3>
+                <p>
+                    Used to group related content within a page.
+                </p>
+            </article>
+
+            <article>
+                <h3>&lt;aside&gt;</h3>
+
+                <!-- ============== ASIDE ============== -->
+                <aside>
+                    <!-- 
+                    <aside> contains content related indirectly
+                    to the main content.
+                    -->
+
+                    <p>
+                        This is an aside.
+                        Often used for:
+                        - Sidebars
+                        - Ads
+                        - Related links
+                    </p>
+                </aside>
+            </article>
+        </section>
+
+        <!-- ============== FORM SECTION ============== -->
+        <section id="contact">
+            <h2>HTML Attributes & Forms</h2>
+
+            <!-- 
+            ATTRIBUTES provide extra information about elements.
+            Syntax:
+            attribute="value"
+            -->
+
+            <form action="#" method="post">
+                <!-- 
+                action="#" means:
+                “Submit to the same page”
+
+                method="post":
+                - Used for sending data securely
+                -->
+
+                <label for="name">
+                    Name:
+                </label>
+                <!-- 
+                for="name" links this label
+                to the input with id="name"
+                -->
+
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="username" 
+                    placeholder="Enter your name"
+                    required
+                >
+                <!-- 
+                type="text"       → input type
+                id="name"         → unique identifier
+                name="username"  → used when submitting data
+                placeholder      → hint text
+                required         → makes input mandatory
+                -->
+
+                <br><br>
+
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Submit
+                </button>
+                <!-- 
+                <button> is semantic.
+                Better than clickable <div>
+                -->
+            </form>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <!-- 
+        <footer> contains information about the page.
+        -->
+
+        <p>&copy; 2026 HTML5 Class</p>
+
+        <address>
+            <!-- 
+            <address> holds contact information.
+            -->
+
+            Created by: <a href="mailto:teacher@example.com">
+                HTML Instructor
+            </a>
+        </address>
+    </footer>
+
+</body>
+</html>
+
