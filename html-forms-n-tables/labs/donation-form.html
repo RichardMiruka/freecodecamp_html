@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Form</title>
+</head>
+<body>
+
+  <main>
+    <h1>Donation Form</h1>
+
+    <form action="/submit-donation" method="post">
+
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <div>
+          <label for="full-name">Full Name</label>
+          <input 
+            type="text" 
+            id="full-name" 
+            name="full-name" 
+            required 
+            autocomplete="name"
+            placeholder="John Doe"
+          >
+        </div>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            autocomplete="email"
+            placeholder="you@example.com"
+          >
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Donation Details</legend>
+
+        <div>
+          <label for="amount">Donation Amount ($)</label>
+          <input 
+            type="number" 
+            id="amount" 
+            name="amount" 
+            min="5" 
+            step="1" 
+            required 
+            autocomplete="off"
+            placeholder="50"
+          >
+        </div>
+
+        <div>
+          <input 
+            type="checkbox" 
+            id="subscribe" 
+            name="newsletter" 
+            value="yes"
+          >
+          <label for="subscribe">Subscribe to our newsletter</label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Donate Now</button>
+
+    </form>
+  </main>
+
+</body>
+</html>
