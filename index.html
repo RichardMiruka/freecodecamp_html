@@ -1,1 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A complete HTML showcase demonstrating every element, attribute, and value from the HTML Reference Guide.">
+  <meta name="keywords" content="HTML, elements, attributes, reference, freeCodeCamp, web development">
+  <meta name="author" content="HTML Reference Guide">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="HTML Complete Reference Showcase">
+  <meta property="og:description" content="Every HTML element in one page.">
+  <meta property="og:image" content="https://placehold.co/1200x630">
+  <base href="">
+  <title>HTML Complete Reference Showcase &mdash; Every Element In One Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap');
 
+    :root {
+      --ink:      #0f1117;
+      --paper:    #f5f2eb;
+      --accent:   #d63a2f;
+      --accent2:  #1a56db;
+      --muted:    #6b6b6b;
+      --border:   #d0cbbf;
+      --code-bg:  #1e293b;
+      --code-fg:  #a5f3fc;
+      --tag:      #d63a2f;
+      --attr:     #1a56db;
+      --val:      #059669;
+      --section-gap: 4rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4, h5, h6 { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.15; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); letter-spacing: -0.03em; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); border-bottom: 3px solid var(--accent); padding-bottom: .4rem; margin-bottom: 1.4rem; }
+    h3 { font-size: 1.25rem; color: var(--accent2); margin: 1.4rem 0 .5rem; }
+    h4 { font-size: 1.05rem; margin: 1rem 0 .4rem; }
+    h5 { font-size: .95rem; color: var(--muted); margin: .8rem 0 .3rem; }
+    h6 { font-size: .85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing:.05em; margin: .6rem 0 .3rem; }
+
+    p  { margin-bottom: 1rem; max-width: 72ch; }
+    strong { font-weight: 700; }
+    em     { font-style: italic; }
+    b      { font-weight: 700; color: var(--accent); }
+    i      { font-style: italic; color: var(--accent2); }
+    u      { text-decoration: underline wavy var(--accent2); text-underline-offset: 3px; }
+    s      { text-decoration: line-through; color: var(--muted); }
+    mark   { background: #fef08a; padding: 0 3px; border-radius: 2px; }
+    small  { font-size: .8em; color: var(--muted); }
+    sup    { font-size: .7em; vertical-align: super; color: var(--accent); }
+    sub    { font-size: .7em; vertical-align: sub; color: var(--accent2); }
+    abbr   { border-bottom: 1px dashed var(--muted); cursor: help; }
+    cite   { font-style: italic; color: var(--accent2); }
+    q      { quotes: "\201C" "\201D" "\2018" "\2019"; }
+    q::before { content: open-quote; color: var(--accent); font-weight: 700; }
+    q::after  { content: close-quote; color: var(--accent); font-weight: 700; }
+    kbd    { background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: .8em; padding: 2px 7px; border-radius: 4px; border-bottom: 3px solid #444; }
+    samp   { font-family: 'Space Mono', monospace; font-size: .85em; color: var(--val); }
+    var    { font-style: italic; color: var(--accent); font-weight: 700; }
+    time   { font-family: 'Space Mono', monospace; font-size: .85em; background: #e0f2fe; padding: 1px 5px; border-radius: 3px; }
+    address { font-style: normal; border-left: 3px solid var(--accent2); padding-left: 1rem; color: var(--muted); }
+    blockquote { border-left: 5px solid var(--accent); margin: 1.5rem 0; padding: .8rem 1.2rem; background: #fff8f5; font-size: 1.05em; border-radius: 0 8px 8px 0; }
+    blockquote footer { font-size: .85em; color: var(--muted); margin-top: .4rem; }
+    pre    { background: var(--code-bg); color: var(--code-fg); padding: 1.2rem 1.5rem; border-radius: 10px; overflow-x: auto; font-family: 'Space Mono', monospace; font-size: .82em; line-height: 1.6; margin: 1rem 0; }
+    code   { font-family: 'Space Mono', monospace; font-size: .82em; background: #fee2e2; color: var(--tag); padding: 1px 5px; border-radius: 3px; }
+    pre code { background: none; color: inherit; padding: 0; font-size: 1em; }
+    hr     { border: none; border-top: 2px dashed var(--border); margin: 2rem 0; }
+
+    /* ─── LAYOUT ─── */
+    .wrapper { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    section  { padding: var(--section-gap) 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 3.5rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '</>';
+      position: absolute; right: -1rem; top: 50%; transform: translateY(-50%);
+      font-size: 14rem; font-family: 'Space Mono', monospace; font-weight: 700;
+      color: rgba(255,255,255,.04); line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+    .site-header h1 { color: #fff; }
+    .site-header h1 span { color: var(--accent); }
+    .site-header p   { color: #9ca3af; max-width: 60ch; margin-top: .5rem; }
+    .badge { display: inline-block; background: var(--accent); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-right: .4rem; margin-bottom: .4rem; }
+
+    /* ─── NAV ─── */
+    .toc-nav {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+    }
+    .toc-nav h3 { color: var(--ink); margin-top: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: .07em; }
+    .toc-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem .8rem; margin-top: .6rem; }
+    .toc-nav a  { color: var(--accent2); text-decoration: none; font-size: .9rem; font-weight: 600; }
+    .toc-nav a:hover { text-decoration: underline; }
+
+    /* ─── SECTION LABELS ─── */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .5rem;
+    }
+
+    /* ─── DEMO BOXES ─── */
+    .demo { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1rem 0; }
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .demo-grid .demo { margin: 0; }
+    .demo label { font-size: .85rem; font-weight: 600; color: var(--muted); display: block; margin-bottom: .3rem; }
+
+    /* ─── TABLES ─── */
+    table  { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .88em; }
+    thead  { background: var(--ink); color: var(--paper); }
+    th     { padding: .6rem .9rem; text-align: left; font-family: 'Space Mono', monospace; font-size: .8em; letter-spacing: .04em; }
+    td     { padding: .55rem .9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tbody tr:nth-child(even) { background: #f9f7f3; }
+    tfoot  { background: #e8e4db; font-weight: 700; }
+    caption { caption-side: top; font-weight: 700; font-size: .9em; text-align: left; margin-bottom: .4rem; color: var(--accent2); }
+    .scroll-table { overflow-x: auto; }
+
+    /* ─── LISTS ─── */
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li     { margin-bottom: .3rem; }
+    dl     { margin: 1rem 0; }
+    dt     { font-weight: 700; color: var(--ink); margin-top: .7rem; }
+    dd     { margin-left: 1.5rem; color: var(--muted); }
+
+    /* ─── FORMS ─── */
+    form   { max-width: 600px; }
+    fieldset { border: 2px solid var(--border); border-radius: 10px; padding: 1.2rem; margin-bottom: 1.2rem; }
+    legend { font-weight: 700; font-family: 'Syne', sans-serif; padding: 0 .5rem; color: var(--accent2); }
+    label  { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; color: var(--ink); }
+    label.inline { display: inline-flex; align-items: center; gap: .4rem; font-weight: 400; margin-right: 1rem; cursor: pointer; }
+    input[type="text"], input[type="email"], input[type="password"],
+    input[type="number"], input[type="tel"], input[type="url"],
+    input[type="search"], input[type="date"], input[type="time"],
+    input[type="month"], input[type="week"], input[type="color"],
+    select, textarea {
+      width: 100%; border: 2px solid var(--border); border-radius: 7px;
+      padding: .55rem .8rem; font-family: 'Syne', sans-serif; font-size: .95rem;
+      background: #fff; color: var(--ink); margin-bottom: .9rem;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent2); }
+    input[type="range"]    { width: 100%; margin: .5rem 0 1rem; accent-color: var(--accent); }
+    input[type="checkbox"],
+    input[type="radio"]    { accent-color: var(--accent); width: 1.1em; height: 1.1em; }
+    input[type="color"]    { height: 2.6rem; padding: .15rem; cursor: pointer; }
+    input[type="file"]     { padding: .4rem; background: #f0eee8; }
+    textarea { resize: vertical; min-height: 90px; }
+    button, input[type="submit"], input[type="reset"], input[type="button"] {
+      background: var(--accent); color: #fff; border: none; border-radius: 7px;
+      padding: .6rem 1.4rem; font-family: 'Syne', sans-serif; font-size: .95rem;
+      font-weight: 700; cursor: pointer; transition: background .2s, transform .1s;
+      margin-right: .5rem; margin-bottom: .5rem;
+    }
+    button:hover { background: #b82e24; transform: translateY(-1px); }
+    button.secondary { background: var(--accent2); }
+    button.secondary:hover { background: #1440a0; }
+    button[type="reset"] { background: #6b7280; }
+    progress { width: 100%; height: 14px; border-radius: 7px; overflow: hidden; border: none; accent-color: var(--accent2); }
+    meter    { width: 100%; }
+    output   { font-weight: 700; color: var(--accent); font-family: 'Space Mono', monospace; }
+
+    /* ─── MEDIA ─── */
+    img { max-width: 100%; border-radius: 8px; }
+    figure { margin: 1rem 0; text-align: center; display: inline-block; max-width: 100%; }
+    figcaption { font-size: .82em; color: var(--muted); margin-top: .4rem; font-style: italic; }
+    video, audio, iframe { max-width: 100%; border-radius: 8px; }
+    iframe { border: 2px solid var(--border); }
+
+    /* ─── DETAILS / SUMMARY ─── */
+    details { border: 2px solid var(--border); border-radius: 9px; margin: .7rem 0; overflow: hidden; }
+    summary { padding: .7rem 1rem; font-weight: 700; cursor: pointer; background: #f0eee8; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: '▼'; font-size: .7em; color: var(--muted); transition: transform .2s; }
+    details[open] summary::after { transform: rotate(-180deg); }
+    details > *:not(summary) { padding: .8rem 1rem; }
+
+    /* ─── DIALOG ─── */
+    dialog { border: 2px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; max-width: 400px; box-shadow: 0 20px 60px rgba(0,0,0,.2); }
+    dialog::backdrop { background: rgba(0,0,0,.5); }
+    dialog h3 { margin-top: 0; }
+
+    /* ─── MISC ─── */
+    .chip { display: inline-block; background: #e0f2fe; color: var(--accent2); font-size: .78rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin: 2px; font-family: 'Space Mono', monospace; }
+    .chip.red { background: #fee2e2; color: var(--accent); }
+    .chip.green { background: #d1fae5; color: #065f46; }
+    .entity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .5rem; margin: 1rem 0; }
+    .entity-grid div { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: .5rem .7rem; font-size: .85em; display: flex; justify-content: space-between; align-items: center; }
+    .entity-grid .char { font-size: 1.2em; font-weight: 700; }
+    .entity-grid code { font-size: .75em; }
+
+    a { color: var(--accent2); }
+    a:visited { color: #7c3aed; }
+    a:hover   { color: var(--accent); }
+
+    .highlight-box { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .info-box { background: #eff6ff; border: 2px solid #93c5fd; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+    .success-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+
+    /* ─── SITE FOOTER ─── */
+    .site-footer { background: var(--ink); color: #9ca3af; padding: 2.5rem 0; text-align: center; }
+    .site-footer a { color: #93c5fd; }
+    .site-footer p { max-width: none; margin-bottom: .4rem; }
+
+    @media (max-width: 600px) {
+      .demo-grid { grid-template-columns: 1fr; }
+      .entity-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════ -->
+<header class="site-header" id="top">
+  <div class="wrapper">
+    <span class="section-label">HTML Complete Reference Showcase</span>
+    <h1><span>&lt;</span>HTML<span>/&gt;</span> Every Element<br>In One Page</h1>
+    <p>A living demonstration of 100+ HTML elements, attributes, and values — open this file in any browser and study every tag in action.</p>
+    <div style="margin-top:1.2rem;">
+      <span class="badge">HTML5</span>
+      <span class="badge">100+ Elements</span>
+      <span class="badge">freeCodeCamp</span>
+      <span class="badge">Responsive Web Design</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════ -->
+<nav class="wrapper" aria-label="Table of contents">
+  <div class="toc-nav">
+    <h3>&#9776; Jump to Section</h3>
+    <ul>
+      <li><a href="#structure">1. Document Structure</a></li>
+      <li><a href="#headings">2. Headings</a></li>
+      <li><a href="#text">3. Text &amp; Inline</a></li>
+      <li><a href="#links">4. Links</a></li>
+      <li><a href="#images">5. Images &amp; Media</a></li>
+      <li><a href="#lists">6. Lists</a></li>
+      <li><a href="#tables">7. Tables</a></li>
+      <li><a href="#forms">8. Forms &amp; Inputs</a></li>
+      <li><a href="#semantic">9. Semantic HTML</a></li>
+      <li><a href="#containers">10. Containers</a></li>
+      <li><a href="#attributes">11. Global Attributes</a></li>
+      <li><a href="#entities">12. HTML Entities</a></li>
+      <li><a href="#meta-section">13. Meta Tags</a></li>
+      <li><a href="#interactive">14. Interactive Elements</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrapper">
+
+  <!-- ═══════════════════════════════════════════════
+       1. DOCUMENT STRUCTURE
+  ════════════════════════════════════════════════ -->
+  <section id="structure">
+    <span class="section-label">Section 01</span>
+    <h2>Document Structure Elements</h2>
+    <p>These elements form the skeleton of every HTML page. You can't see most of them on screen — they work behind the scenes to tell the browser how to interpret your page.</p>
+
+    <div class="info-box">
+      <strong>Note:</strong> The structural elements <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;style&gt;</code>, and <code>&lt;script&gt;</code> are all actively used in <em>this very file</em>. View the page source (<kbd>Ctrl+U</kbd>) to see them.
+    </div>
+
+    <h3>What Each Structural Element Does</h3>
+    <div class="scroll-table">
+      <table>
+        <caption>Document Structure Elements</caption>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Location</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Line 1</td><td>Declares HTML5 to the browser</td></tr>
+          <tr><td><code>&lt;html lang="en"&gt;</code></td><td>Wraps everything</td><td>Root element + language declaration</td></tr>
+          <tr><td><code>&lt;head&gt;</code></td><td>Before &lt;body&gt;</td><td>Metadata container — not rendered visually</td></tr>
+          <tr><td><code>&lt;title&gt;</code></td><td>Inside &lt;head&gt;</td><td>Browser tab title</td></tr>
+          <tr><td><code>&lt;meta charset&gt;</code></td><td>Inside &lt;head&gt;</td><td>Character encoding (UTF-8 = all languages)</td></tr>
+          <tr><td><code>&lt;meta viewport&gt;</code></td><td>Inside &lt;head&gt;</td><td>Makes page mobile-responsive</td></tr>
+          <tr><td><code>&lt;link&gt;</code></td><td>Inside &lt;head&gt;</td><td>Links CSS stylesheets or fonts</td></tr>
+          <tr><td><code>&lt;style&gt;</code></td><td>Inside &lt;head&gt;</td><td>Internal CSS styles</td></tr>
+          <tr><td><code>&lt;script&gt;</code></td><td>End of &lt;body&gt;</td><td>JavaScript code or file</td></tr>
+          <tr><td><code>&lt;base&gt;</code></td><td>Inside &lt;head&gt;</td><td>Base URL for all relative links</td></tr>
+          <tr><td><code>&lt;body&gt;</code></td><td>After &lt;head&gt;</td><td>All visible page content lives here</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <pre><code>&lt;!-- The skeleton of EVERY HTML page --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title Here&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- All visible content goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       2. HEADINGS
+  ════════════════════════════════════════════════ -->
+  <section id="headings">
+    <span class="section-label">Section 02</span>
+    <h2>Headings &mdash; h1 through h6</h2>
+    <p>HTML has <strong>six heading levels</strong>. Use them in order — never skip levels just for visual size. Headings define your page's outline for screen readers and search engines.</p>
+
+    <div class="demo">
+      <h1>h1 &mdash; Main Page Title (only one per page)</h1>
+      <h2>h2 &mdash; Major Section Heading</h2>
+      <h3>h3 &mdash; Subsection Heading</h3>
+      <h4>h4 &mdash; Sub-subsection Heading</h4>
+      <h5>h5 &mdash; Minor Heading (rarely used)</h5>
+      <h6>h6 &mdash; Smallest Heading Level</h6>
+    </div>
+
+    <pre><code>&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;h3&gt;Subsection Heading&lt;/h3&gt;
+&lt;h4&gt;Sub-subsection&lt;/h4&gt;
+&lt;h5&gt;Minor Heading&lt;/h5&gt;
+&lt;h6&gt;Smallest Heading&lt;/h6&gt;</code></pre>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       3. TEXT & INLINE ELEMENTS
+  ════════════════════════════════════════════════ -->
+  <section id="text">
+    <span class="section-label">Section 03</span>
+    <h2>Text &amp; Inline Elements</h2>
+
+    <h3>Paragraphs &amp; Line Breaks</h3>
+    <div class="demo">
+      <p>This is a <code>&lt;p&gt;</code> paragraph element. It creates a block of text with space above and below.</p>
+      <p>A second paragraph. Each <code>&lt;p&gt;</code> tag starts a new paragraph.</p>
+      <p>This line uses a<br>line break. The text continues on the next line within the same paragraph using <code>&lt;br&gt;</code>.</p>
+      <p>Below this paragraph is a horizontal rule &mdash; a <code>&lt;hr&gt;</code> element.</p>
+      <hr>
+      <p>After the horizontal rule.</p>
+    </div>
+
+    <h3>Text Formatting</h3>
+    <div class="demo">
+      <p>
+        <strong>strong &mdash; bold with importance</strong> &nbsp;|&nbsp;
+        <b>b &mdash; bold visual only</b> &nbsp;|&nbsp;
+        <em>em &mdash; italic with emphasis</em> &nbsp;|&nbsp;
+        <i>i &mdash; italic visual only</i>
+      </p>
+      <p>
+        <u>u &mdash; underlined text</u> &nbsp;|&nbsp;
+        <s>s &mdash; strikethrough text</s> &nbsp;|&nbsp;
+        <mark>mark &mdash; highlighted text</mark> &nbsp;|&nbsp;
+        <small>small &mdash; fine print</small>
+      </p>
+      <p>
+        Superscript: E = mc<sup>2</sup> &nbsp;|&nbsp;
+        Subscript: H<sub>2</sub>O &nbsp;|&nbsp;
+        <abbr title="HyperText Markup Language">HTML</abbr> &mdash; hover to see abbr tooltip
+      </p>
+    </div>
+
+    <h3>Technical &amp; Semantic Text</h3>
+    <div class="demo">
+      <p>
+        Inline code: <code>let x = 5;</code> &nbsp;|&nbsp;
+        Keyboard key: <kbd>Ctrl</kbd> + <kbd>S</kbd>
+      </p>
+      <p>
+        Sample output: <samp>Error: File not found</samp> &nbsp;|&nbsp;
+        Variable: Solve for <var>x</var> + <var>y</var> = 10
+      </p>
+      <p>
+        Time element: Published on <time datetime="2024-03-15">March 15, 2024</time>
+      </p>
+      <p>
+        Citation: Read <cite>The HTML Living Standard</cite> for full details.
+      </p>
+      <p>
+        Short quote: <q>The web is for everyone.</q> &mdash; Tim Berners-Lee
+      </p>
+    </div>
+
+    <h3>Block Quotation</h3>
+    <div class="demo">
+      <blockquote cite="https://freecodecamp.org">
+        &ldquo;The best way to learn to code is to build projects. Don&rsquo;t wait until you&rsquo;re ready &mdash; you&rsquo;ll never feel ready. Just start.&rdquo;
+        <footer>&mdash; freeCodeCamp Community</footer>
+      </blockquote>
+    </div>
+
+    <h3>Preformatted Text</h3>
+    <div class="demo">
+      <pre>
+  Name:    Amina Ochieng
+  Score:   95 / 100
+  Grade:   A+
+
+  This text preserves
+      all    spacing
+  and line breaks exactly.
+      </pre>
+    </div>
+
+    <h3>Address Element</h3>
+    <div class="demo">
+      <address>
+        Contact the developer:<br>
+        Email: <a href="mailto:student@example.com">student@example.com</a><br>
+        Nairobi, Kenya
+      </address>
+    </div>
+
+    <h3>Span (Inline Container)</h3>
+    <div class="demo">
+      <p>The <span style="color: var(--accent); font-weight:700;">span element</span> is an inline container used to group text <span style="background:#fef08a; padding:0 3px;">for styling</span> without breaking the flow of the sentence.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       4. LINKS
+  ════════════════════════════════════════════════ -->
+  <section id="links">
+    <span class="section-label">Section 04</span>
+    <h2>Links &mdash; The &lt;a&gt; Anchor Element</h2>
+    <p>Links connect the web. The <code>&lt;a&gt;</code> element can link to other pages, sections, email addresses, phone numbers, and files.</p>
+
+    <div class="demo-grid">
+      <div class="demo">
+        <label>External link (new tab)</label>
+        <a href="https://freecodecamp.org" target="_blank" rel="noopener noreferrer">Visit freeCodeCamp &#8599;</a>
+      </div>
+      <div class="demo">
+        <label>Same-page anchor link</label>
+        <a href="#forms">Jump to Forms section &darr;</a>
+      </div>
+      <div class="demo">
+        <label>Email link</label>
+        <a href="mailto:hello@example.com">Send me an email</a>
+      </div>
+      <div class="demo">
+        <label>Phone link</label>
+        <a href="tel:+254700000000">Call: +254 700 000 000</a>
+      </div>
+      <div class="demo">
+        <label>Download link</label>
+        <a href="index.html" download="my-page.html">Download this page</a>
+      </div>
+      <div class="demo">
+        <label>Placeholder link</label>
+        <a href="#">Placeholder (goes nowhere)</a>
+      </div>
+    </div>
+
+    <h3>Link Attributes Reference</h3>
+    <div class="scroll-table">
+      <table>
+        <thead>
+          <tr><th>Attribute</th><th>Value Example</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>href</code></td><td><code>https://example.com</code></td><td>Destination URL</td></tr>
+          <tr><td><code>href</code></td><td><code>#section-id</code></td><td>Same-page anchor jump</td></tr>
+          <tr><td><code>href</code></td><td><code>mailto:hi@site.com</code></td><td>Open email client</td></tr>
+          <tr><td><code>href</code></td><td><code>tel:+1234567890</code></td><td>Dial phone number</td></tr>
+          <tr><td><code>target</code></td><td><code>_blank</code></td><td>Open in new tab</td></tr>
+          <tr><td><code>target</code></td><td><code>_self</code></td><td>Open in same tab (default)</td></tr>
+          <tr><td><code>rel</code></td><td><code>noopener noreferrer</code></td><td>Security for external links</td></tr>
+          <tr><td><code>download</code></td><td><code>filename.pdf</code></td><td>Force download instead of navigate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       5. IMAGES & MEDIA
+  ════════════════════════════════════════════════ -->
+  <section id="images">
+    <span class="section-label">Section 05</span>
+    <h2>Images &amp; Media</h2>
+
+    <h3>The &lt;img&gt; Element</h3>
+    <div class="demo-grid">
+      <div class="demo" style="text-align:center;">
+        <label>Basic img with alt, width, height</label>
+        <img src="https://placehold.co/300x180/1a56db/ffffff?text=img+element" alt="A blue placeholder image showing the img element" width="300" height="180" loading="lazy" title="This is an img element with alt, width, height, loading, and title attributes">
+      </div>
+      <div class="demo">
+        <label>figure + img + figcaption</label>
+        <figure>
+          <img src="https://placehold.co/260x160/d63a2f/ffffff?text=figure+%2B+figcaption" alt="Red placeholder demonstrating figure and figcaption" width="260" loading="lazy">
+          <figcaption>Fig. 1 &mdash; The &lt;figure&gt; wraps the image, &lt;figcaption&gt; adds this caption.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <h3>The &lt;picture&gt; Element (Responsive Images)</h3>
+    <div class="demo">
+      <picture>
+        <source srcset="https://placehold.co/600x120/065f46/ffffff?text=Large+screen+(600px+wide)" media="(min-width: 600px)">
+        <source srcset="https://placehold.co/400x120/4c1d95/ffffff?text=Medium+screen+(400px+wide)" media="(min-width: 400px)">
+        <img src="https://placehold.co/300x120/92400e/ffffff?text=Small+screen+(fallback)" alt="Responsive image demo using picture and source elements" loading="lazy">
+      </picture>
+      <p><small>Resize your browser to see different images load for different screen widths.</small></p>
+    </div>
+
+    <h3>&lt;audio&gt; Element</h3>
+    <div class="demo">
+      <audio controls>
+        <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <p><small>Attributes shown: <code>controls</code>. Also available: <code>autoplay</code>, <code>loop</code>, <code>muted</code>, <code>preload</code>.</small></p>
+    </div>
+
+    <h3>&lt;video&gt; Element</h3>
+    <div class="demo">
+      <video controls width="400" poster="https://placehold.co/400x225/1e293b/a5f3fc?text=video+element">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <p><small>Attributes shown: <code>controls</code>, <code>width</code>, <code>poster</code>. Also available: <code>autoplay</code>, <code>loop</code>, <code>muted</code>, <code>preload</code>.</small></p>
+    </div>
+
+    <h3>&lt;iframe&gt; Element</h3>
+    <div class="demo">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=36.7,1.25,37.0,1.45&amp;layer=mapnik"
+        width="100%"
+        height="250"
+        title="OpenStreetMap showing Nairobi, Kenya"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+      <p><small><code>&lt;iframe&gt;</code> embedding OpenStreetMap. Attributes: <code>src</code>, <code>width</code>, <code>height</code>, <code>title</code>, <code>loading</code>, <code>allowfullscreen</code>.</small></p>
+    </div>
+
+    <h3>Inline SVG</h3>
+    <div class="demo">
+      <svg width="200" height="80" xmlns="http://www.w3.org/2000/svg" aria-label="SVG demo shapes" role="img">
+        <title>SVG Demo</title>
+        <rect x="5" y="5" width="70" height="70" rx="8" fill="#d63a2f"/>
+        <circle cx="115" cy="40" r="35" fill="#1a56db"/>
+        <polygon points="165,5 195,75 135,75" fill="#059669"/>
+      </svg>
+      <p><small>Inline <code>&lt;svg&gt;</code> with <code>&lt;rect&gt;</code>, <code>&lt;circle&gt;</code>, and <code>&lt;polygon&gt;</code>.</small></p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       6. LISTS
+  ════════════════════════════════════════════════ -->
+  <section id="lists">
+    <span class="section-label">Section 06</span>
+    <h2>Lists</h2>
+
+    <div class="demo-grid">
+      <div class="demo">
+        <h3>Unordered List &lt;ul&gt;</h3>
+        <ul>
+          <li>HTML &mdash; structure</li>
+          <li>CSS &mdash; styling</li>
+          <li>JavaScript &mdash; behaviour</li>
+          <li>Nested list:
+            <ul>
+              <li>React</li>
+              <li>Vue</li>
+              <li>Angular</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="demo">
+        <h3>Ordered List &lt;ol&gt;</h3>
+        <ol>
+          <li>Open VS Code</li>
+          <li>Create <code>index.html</code></li>
+          <li>Write the boilerplate</li>
+          <li>Build something great</li>
+        </ol>
+        <h4>Starting at 5, reversed</h4>
+        <ol start="5" reversed>
+          <li>Fifth item</li>
+          <li>Fourth item</li>
+          <li>Third item</li>
+        </ol>
+      </div>
+
+      <div class="demo">
+        <h3>Ordered List Types</h3>
+        <ol type="A">
+          <li>Uppercase letter A</li>
+          <li>Uppercase letter B</li>
+        </ol>
+        <ol type="a">
+          <li>Lowercase letter a</li>
+          <li>Lowercase letter b</li>
+        </ol>
+        <ol type="I">
+          <li>Roman numeral I</li>
+          <li>Roman numeral II</li>
+        </ol>
+        <ol type="i">
+          <li>Lowercase roman i</li>
+          <li>Lowercase roman ii</li>
+        </ol>
+      </div>
+
+      <div class="demo">
+        <h3>Description List &lt;dl&gt;</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language — structures web content.</dd>
+          <dt>CSS</dt>
+          <dd>Cascading Style Sheets — styles web content.</dd>
+          <dt>JavaScript</dt>
+          <dd>A programming language that adnteractivity.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3>Menu Element &lt;menu&gt;</h3>
+    <div class="demo">
+      <menu>
+        <li><button>&#9998; Edit</button></li>
+        <li><button>&#128203; Copy</button></li>
+        <li><button>&#128465; Delete</button></li>
+      </menu>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       7. TABLES
+  ══════════════════════════════════ -->
+  <section id="tables">
+    <span class="section-label">Section 07</span>
+    <h2>Tables</h2>
+    <p>Tables organize data into rows and columns. Use them for data — never for page layout.</p>
+
+    <div class="demo scroll-table">
+      <table>
+        <caption>HTML Elements &mdash; Student Reference Sheet</caption>
+        <colgroup>
+          <col style="width:20%">
+          <col style="width:40%">
+          <col style="wi%">
+          <col style="width:20%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Element</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Type</th>
+            <th scope="col">Self-closing?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;p&gt;</code></td>
+            <td>Paragraph of text</td>
+            <td>Block</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><code>&lt;img&gt;</code></td>
+            <td>Displays an image</td>
+            <td>Inline</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><code>&lt;a&gt;</code></td>
+            <td>Hyperlink</td>
+            <td>Inline</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><code>&lt;ul&gt;</code></td>
+            <td>Unordered list</td>
+            <td>Block</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><code>&lt;form&gt;</code></td>
+            <td>Input form container</td>
+            <td>Block</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><code>&lt;input&gt;</code></td>
+            <td>User input field</td>
+            <td>Inline</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total elements shown</td>
+            <td>6</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3>colspan and rowspan</h3>
+    <div class="demo scroll-table">
+      <table>
+        <caption>colspan &amp; rowspan demonstration</caption>
+        <thead>
+          <tr>
+            <th scope="col">Mon</th>
+            <th scope="col">Tue</th>
+            <th scope="col">Wed</th>
+            <th scope="col">Thu</th>
+            <th scope="col">Fri</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML</td>
+            <td colspan="2" style="background:#dbeafe;text-align:center;"><strong>colspan=2</strong>: spans Tuesday &amp; Wednesday</td>
+            <td>CSS</td>
+            <td rowspan="2" style="background:#d1fae5;text-align:center; vertical-align:middle;"><strong>rowspan=2</strong><br>spans 2 rows</td>
+          </tr>
+          <tr>
+            <td>Forms</td>
+            <td>Tables</td>
+            <td>Lists</td>
+            <td>Semantic</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════â═══
+       8. FORMS & INPUTS
+  ════════════════════════════════════════════════ -->
+  <section id="forms">
+    <span class="section-label">Section 08</span>
+    <h2>Forms &amp; User Input</h2>
+
+    <form action="#" method="GET" autocomplete="on">
+
+      <fieldset>
+        <legend>Text-based Inputs</legend>
+
+        <label for="inp-text">type="text" &mdash; Single-line text</label>
+        <input type="teinp-text" name="fullname" placeholder="e.g. Amina Ochieng" maxlength="50" required>
+
+        <label for="inp-email">type="email" &mdash; Validates @ symbol</label>
+        <input type="email" id="inp-email" name="email" placeholder="you@example.com" required autocomplete="email">
+
+        <label for="inp-password">type="password" &mdash; Hides characters</label>
+        <input type="password" id="inp-password" name="password" placeholder="Min 8 characters" minlength="8">
+
+        <label for="inp-search">type="search" &mdash; Search field</label>
+        <input type="search" id="inp-search" name="q" placeholder="Search...">
+
+        <label for="inp-url">type="url" &mdash; URL field</label>
+        <input type="url" id="inp-url" name="website" placeholder="https://yoursite.com">
+
+        <label for="inp-tel">type="tel" &mdash; Phone number</label>
+        <input type="tel" id="inp-tel" name="phone" placeholder="+254 700 000 000" pattern="[+][0-9]{10,14}">
+
+        <label for="inp-textarea">textarea &mdash; Multi-line text</label>
+        <textarea id="inp-textarea" name="message" rows="4" cols="50" placeholder="Write your message here..." spellcheck="true"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Number &amp; Range Inputs</legend>
+
+        <label for="inp-number">type="number" (min=1, max=100, step=5)</label>
+        <input type="number" id="inp-number" name="quantity" min="1" max="100" step="5" value="10">
+
+        <label for="inp-range">type="range" — Slider (0–100)</label>
+        <i type="range" id="inp-range" name="volume" min="0" max="100" step="1" value="60"
+               oninput="document.getElementById('range-out').value = this.value">
+        <output id="range-out" for="inp-range">60</output>
+      </fieldset>
+
+      <fieldset>
+        <legend>Date &amp; Time Inputs</legend>
+
+        <label for="inp-date">type="date"</label>
+        <input type="date" id="inp-date" name="dob" min="1990-01-01" max="2010-12-31">
+
+        <label for="inp-time">type="time"</label>
+        <input type="time" id="inp-time" name="meeting-time">
+
+        <label for="inp-month">type="month"</label>
+        <input type="month" id="inp-month" name="birth-month">
+
+        <label for="inp-week">type="week"</label>
+        <input type="week" id="inp-week" name="start-week">
+      </fieldset>
+
+      <fieldset>
+        <legend>Choice Inputs: Radio, Checkbox, Color, File</legend>
+
+        <p style="font-weight:600; font-size:.85rem; margin-bottom:.4rem;">type="radio" &mdash; Pick ONE option (same name)</p>
+        <label class="inline"><input type="radio" name="level" value="beginner" checked> Beginner</label>
+        <label class="inline"><input type="radio" name="level" value="intermediate"> Intermediate</label>
+        <label class="inline"><input type="radio" name="level" value="advanced"> Advanced</label>
+
+        <p style="font-weight:600; font-size:.85rem; margin: 1rem 0 .4rem;">type="checkbox" &mdash; Select multiple</p>
+        <label class="inline"><input type="checkbox" name="topics" value="html" checked> HTML</label>
+        <label class="inline"><input type="checkbox" name="topics" value="css"> CSS</label>
+        <label class="inline"><input type="checkbox" name="topics" value="js"> JavaScript</label>
+
+        <br><br>
+        <label for="inp-color">type="color" &mdash; Color picker</label>
+        <input type="color" id="inp-color" name="fav-color" value="#1a56db">
+
+        <label for="inp-file">type="file" &mdash; File upload (accepts images)</label>
+        <input type="file" id="inp-file" name="avatar" accept="image/*" multiple>
+      </fieldset>
+
+      <fieldset>
+        <legend>Select Dropdown &amp; Datalist</legend>
+
+        <label for="inp-select">select &mdash; Dropdown menu</label>
+        <select id="inp-select" name="country">
+          <option value="">-- Choose a country --</option>
+          <optgroup label="East Africa">
+            <option value="ke" selected>Kenya</option>
+            <option value="tz">Tanzania</option>
+            <option value="ug">Uganda</option>
+          </optgroup>
+          <optgroup label="West Africa">
+            <option value="ng">Nigeria</option>
+            <option value="gh">Ghana</option>
+          </optgroup>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="inp-datalist">input + datalist &mdash; Autocomplete suggestions</label>
+        <input type="text" id="inp-datalist" name="browser" list="browsers-list" placeholder="Type a browser name...">
+        <datalist id="browsers-list">
+          <option value="Chrome">
+          <option value="Firefox">
+          <option value="Safari">
+          <option value="Edge">
+          <option value="Opera">
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <legend>Special Inputs: Hidden, Disabled, Readonly</legend>
+
+        <label for="inp-hidden-show">type="hidden" (visible version below &mdash; real hidden inputs are invisible)</label>
+        <input type="text" id="inp-hidden-show" value="This is what a hidden field contains" readonly style="background:#f0eee8; color:#999;">
+        <input type="hidden" name="session-token" value="abc123xyz">
+
+        <label for="inp-disabled">disabled &mdash; Cannot interact</label>
+        <input type="text" id="inp-disabled" name="disabled-field" value="This field is disabled" disabled>
+
+        <label for="inp-readonly">readonly &mdash; Can see, cannot edit</label>
+        <input type="text" id="inp-readonly" name="readonly-field" value="This field is read-only" readonly>
+      </fieldset>
+
+      <fieldset>
+        <legend>Progress &amp; Meter</legend>
+
+        <label>progress (value=70, max=100) &mdash; Task completion</label>
+        <progress id="task-progress" value="70" max="100">70%</progress>
+
+        <label>progress indeterminate (no value) &mdash; Loading...</label>
+        <progress max="100">Loading...</progress>
+
+        <label>meter (value=0.72) &mdash; Battery / Score level</label>
+        <meter value="0.72" min="0" max="1" low="0.25" high="0.75" optimum="0.9">72%</meter>
+        <br>
+        <label>meter &mdash; Low range (warning)</label>
+        <meter value="0.2" min="0" max="1" low="0.25" high="0.75" optimum="0.9">20%</meter>
+      </fieldset>
+
+      <fieldset>
+        <legend>Buttons</legend>
+        <button type="submit">&#10003; Submit Form</button>
+        <button type="reset">&#8635; Reset All Fields</button>
+        <button type="button" class="secondary" onclick="alert('Button clicked! This is type=button with onclick.')">&#128077; Generic Button</button>
+        <input type="submit" value="input type=submit">
+        <input type="reset" value="input type=reset">
+        <input type="button" value="input type=button">
+      </fieldset>
+
+    </form>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       9. SEMANTIC HTML
+  ════════════════════════════════════════════════ -->
+  <section id="semantic">
+   section-label">Section 09</span>
+    <h2>Semantic HTML Elements</h2>
+    <p>Semantic elements clearly describe their role — to the browser, developers, and screen readers. Always prefer these over generic <code>&lt;div&gt;</code> elements.</p>
+
+    <div class="info-box">
+      <strong>Did you know?</strong> This entire page uses semantic HTML. The top bar is a <code>&lt;header&gt;</code>, the jump links are a <code>&lt;nav&gt;</code>, this content area is <code>&lt;main&gt;</code>, each topic block is a <de>&lt;section&gt;</code>, and the bottom bar is a <code>&lt;footer&gt;</code>.
+    </div>
+
+    <h3>article</h3>
+    <div class="demo">
+      <article>
+        <h3>My First HTML Project</h3>
+        <p>Published: <time datetime="2024-03-01">March 1, 2024</time></p>
+        <p>The <code>&lt;article&gt;</code> element represents a self-contained piece of content that could stand alone — like a blog post, news article, or product card.</p>
+        <a href="#">Read more &rarr;</a>
+      </article>
+    </div>
+   <h3>aside</h3>
+    <div class="demo">
+      <aside style="border-left: 4px solid var(--accent2); padding: .5rem 1rem; background:#eff6ff; border-radius:0 8px 8px 0;">
+        <h4>&#128161; Did You Know?</h4>
+        <p>The <code>&lt;aside&gt;</code> element is for content that is related to, but separate from, the main content — like sidebars, callout boxes, and related links.</p>
+      </aside>
+    </div>
+
+    <h3>details &amp; summary</h3>
+    <div class="demo">
+      <details>
+        <summary>What  the difference between &lt;strong&gt; and &lt;b&gt;?</summary>
+        <p><code>&lt;strong&gt;</code> means the text is <em>important</em> — screen readers will stress it. <code>&lt;b&gt;</code> is visually bold with no semantic meaning. Always prefer <code>&lt;strong&gt;</code> for actual importance.</p>
+      </details>
+      <details>
+        <summary>What is the difference between &lt;em&gt; and &lt;i&gt;?</summary>
+        <p><code>&lt;em&gt;</code> means the text is <em>emphasized</em>. <code>&lt;it;</code> is visually italic only — often used for technical terms or icon fonts.</p>
+      </details>
+      <details open>
+        <summary>This one starts open (has the <code>open</code> attribute)</summary>
+        <p>Add the <code>open</code> attribute to <code>&lt;details&gt;</code> to make it expanded by default.</p>
+      </details>
+    </div>
+
+    <h3>mark &amp; time (semantic usage)</h3>
+    <div class="demo">
+      <p>Search results highlighting: The term <mark>HTML semantic elements</mark> appes 47 times in this document.</p>
+      <p>The freeCodeCamp Responsive Web Design curriculum was updated on <time datetime="2022-06-15">June 15, 2022</time>.</p>
+    </div>
+
+    <h3>Semantic Page Layout Reference</h3>
+    <pre><code>&lt;body&gt;
+  &lt;header&gt;        &lt;!-- Site header: logo, nav --&gt;
+    &lt;nav&gt; ... &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;           &lt;!-- Primary content (only ONE per page) --&gt;
+    &lt;article&gt;     &lt;!-- Self-contained content --&gt;
+      &lt;section&gt; ... &lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt; ... &lt;/aside&gt;    &lt;!-- Sidebar --&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt; ... &lt;/footer&gt;    &lt;!-- Site footer --&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       10. CONTAINERS: DIV & SPAN
+  ═════════════════════════════â════════ -->
+  <section id="containers">
+    <span class="section-label">Section 10</span>
+    <h2>Generic Containers: &lt;div&gt; &amp; &lt;span&gt;</h2>
+
+    <div class="highlight-box">
+      <strong>Rule:</strong> Always ask if a semantic element fits first. Only use <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> when no semantic element is appropriate.
+    </div>
+
+    <h3>div &mdash; Block Container</h3>
+    <div class="demo">
+      <div style="background:#e0f2fe; border-radiuspx; padding:1rem; margin-bottom:.8rem;">
+        <p>This is a <code>&lt;div&gt;</code> — it creates a block-level box. It starts on a new line and takes up the full width.</p>
+      </div>
+      <div style="background:#fce7f3; border-radius:8px; padding:1rem;">
+        <p>A second <code>&lt;div&gt;</code>. Each div starts on its own line.</p>
+      </div>
+    </div>
+
+    <h3>span &mdash; Inline Container</h3>
+    <div class="demo">
+      <p>A <code>&lt;span&gt;</code> is inline — it <span style="backgro#fef08a; padding:0 3px; border-radius:2px;">stays inside the text flow</span> without creating a new line. It's used to <span style="color:var(--accent); font-weight:700;">style a specific word or phrase</span> within a paragraph.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       11. GLOBAL ATTRIBUTES
+  ═══════════════════════â══════════ -->
+  <section id="attributes">
+    <span class="section-label">Section 11</span>
+    <h2>Global Attributes</h2>
+    <p>These attributes can be applied to <strong>any</strong> HTML element.</p>
+
+    <div class="demo-grid">
+      <div class="demo">
+        <label>id — Unique identifier</label>
+        <p id="unique-paragraph" style="font-family:'Space Mono',monospace; font-size:.85em;">id="unique-paragraph"</p>
+        <a href="#unique-paragraph">Link targets this id</a>
+ iv>
+
+      <div class="demo">
+        <label>class — CSS styling hook</label>
+        <p class="chip">class="chip"</p>
+        <p class="chip red">class="chip red"</p>
+        <p class="chip green">class="chip green"</p>
+      </div>
+
+      <div class="demo">
+        <label>title — Tooltip on hover</label>
+        <p title="I am a tooltip! Hover over this text.">&#128161; Hover over this text to see the title tooltip</p>
+      </div>
+
+      <div class="demo">
+        <label>hidden — Hides the element<>
+        <p>Paragraph 1 (visible)</p>
+        <p hidden>Paragraph 2 (hidden — in the HTML but not shown)</p>
+        <p>Paragraph 3 (visible — the hidden paragraph is between these two)</p>
+      </div>
+
+      <div class="demo">
+        <label>contenteditable — Editable in browser</label>
+        <p contenteditable="true" style="border: 2px dashed var(--accent2); padding:.4rem; border-radius:5px; min-height:2rem;">Click here and type to edit this text directly in the browser!</p>
+      </div>
+
+      lass="demo">
+        <label>tabindex — Keyboard tab order</label>
+        <button tabindex="3">Tab order: 3</button>
+        <button tabindex="1">Tab order: 1</button>
+        <button tabindex="2">Tab order: 2</button>
+        <button tabindex="-1">tabindex=-1 (skipped)</button>
+      </div>
+
+      <div class="demo">
+        <label>draggable — Drag and drop</label>
+        <p draggable="true" style="display:inline-block; background:#e0f2fe; padding:.3rem .8rem; border-radius:5px; cursor:grab; border: 2pshed var(--accent2);">
+          &#9783; Drag me!
+        </p>
+      </div>
+
+      <div class="demo">
+        <label>lang — Language override</label>
+        <p lang="sw">Habari! (Swahili — lang="sw")</p>
+        <p lang="fr">Bonjour! (French — lang="fr")</p>
+        <p lang="ar" dir="rtl" style="text-align:right;">مرحبا (Arabic — lang="ar" dir="rtl")</p>
+      </div>
+
+      <div class="demo">
+        <label>data-* — Custom data attributes</label>
+        <div data-user-id="42" data-role="stul="beginner"
+             style="font-family:'Space Mono',monospace; font-size:.8em; background:#f0eee8; padding:.5rem; border-radius:5px;">
+          data-user-id="42"<br>
+          data-role="student"<br>
+          data-level="beginner"
+        </div>
+        <p><small>Custom data stored on elements for JavaScript use.</small></p>
+      </div>
+
+      <div class="demo">
+        <label>style — Inline CSS</label>
+        <p style="color: #d63a2f; font-size: 1.1em; font-weight: bold; letter-spacing: .05em;"tyled with style attribute</p>
+      </div>
+
+      <div class="demo">
+        <label>spellcheck — Spell checking</label>
+        <textarea spellcheck="true" rows="2" placeholder="spellcheck=true: type here to see red underlines on typos..." style="margin:0"></textarea>
+      </div>
+
+      <div class="demo">
+        <label>ARIA Accessibility Attributes</label>
+        <button aria-label="Close this dialog" title="Close">&#10005; aria-label demo</button>
+        <p aria-hidden="true" style="color:var(--mute; font-size:.85em;">aria-hidden=true: screen readers skip this</p>
+        <p id="desc-target">This is a description paragraph.</p>
+        <button aria-describedby="desc-target">aria-describedby points to paragraph above</button>
+      </div>
+    </div>
+
+    <h3>role Attribute (ARIA Roles)</h3>
+    <div class="demo">
+      <div role="alert" style="background:#fee2e2; border-left:4px solid var(--accent); padding:.6rem 1rem; border-radius:0 6px 6px 0;">
+        <strong>role="alert"</strong> &mdash; Screen readers announce this immediately.
+      </div>
+      <nav role="navigation" aria-label="Secondary navigation" style="margin-top:.8rem;">
+        <span style="font-size:.85em; color:var(--muted);">role="navigation" on a nav element</span>
+      </nav>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       12. HTML ENTITIES
+  ══════════════════════════════════════════ -->
+  <section id="entities">
+    <span class="section-label">Section 12</span>
+    <h2>HTML Entities &amp; Special Characters</h2>
+    <p>Some characters have special meaning in HTML (like <code>&lt;</code> and <code>&gt;</code>). Use entities to display them safely.</p>
+
+    <div class="entity-grid">
+      <div><span class="char">&lt;</span><code>&amp;lt;</code></div>
+      <div><span class="char">&gt;</span><code>&amp;gt;</code></div>
+   n class="char">&amp;</span><code>&amp;amp;</code></div>
+      <div><span class="char">&quot;</span><code>&amp;quot;</code></div>
+      <div><span class="char">&apos;</span><code>&amp;apos;</code></div>
+      <div><span class="char">&copy;</span><code>&amp;copy;</code></div>
+      <div><span class="char">&reg;</span><code>&amp;reg;</code></div>
+      <div><span class="char">&trade;</span><code>&amp;trade;</code></div>
+      <div><span class="char">&euro;</span><code>&amp;euro;</code></div>
+      <div><span class="char">&pound;</span><code>&amp;pound;</code></div>
+      <div><span class="char">&nbsp;</span><code>&amp;nbsp;</code></div>
+      <div><span class="char">&mdash;</span><code>&amp;mdash;</code></div>
+      <div><span class="char">&ndash;</span><code>&amp;ndash;</code></div>
+      <div><span class="char">&rarr;</span><code>&amp;rarr;</code></div>
+      <div><span class="char">&larr;</span><code>&amp;larr;</code></div>
+      <div><span class="char">&uarr;</span><code>&amp;uarr;</code></div>
+      <div><span class="char">&darr;</span><code>&amp;darr;</code></div>
+      <div><span class="char">&hearts;</span><code>&amp;hearts;</code></div>
+      <div><span class="char">&spades;</span><code>&amp;spades;</code></div>
+      <div><span class="char">&clubs;</span><code>&amp;clubs;</code></div>
+      <div><span class="char">&diams;</span><code>&amp;diams;</code></div>
+      <div><span class="char">&#9733;</span><code>&amp;#9733;</code></div>
+      <div><span class="char">&laquo;</span><code>&amp;laquo;</code></div>
+      <div><span class="char">&raquo;</span><code>&amp;raquo;</code></div>
+      <div><span class="char">&deg;</span><code>&amp;deg;</code></div>
+      <div><span class="char">&plusmn;</span><code>&amp;plusmn;</code></div>
+      <div><span class="char">&times;</span><code>&amp;times;</code></div>
+      <div><span class="char">&divide;</span><code>&amp;divide;</code></div>
+      <div><span class="char">&frac12;</span><code>&amp;frac12;</code></div>
+      <div><span class="char">&ldquo;</span><code>&amp;ldquo;</code></div>
+      <div><span class="char">&rdquo;</span><code>&amp;rdquo;</code></div>
+      <div><span class="char">&lsquo;</span><code>&amp;lsquo;</code></div>
+      <div><span class="char">&rsquo;</span><code>&amp;rsquo;</code></div>
+    </div>
+
+    <pre><code>&lt;p&gt;Copyright &amp;copy; 2024 &amp;mdash; All rights reserved&lt;/p&gt;
+&lt;p&gt;Price: &amp;euro;49.99 &amp;plusmn; &amp;euro;5.00&lt;/p&gt;
+&lt;p&gt;Rating: &amp;#9733;&amp;#9733;&amp;#9733;&amp;#9733;&amp;#9734;&lt;/p&gt;</code></pre>
+    <div class="demo">
+      <p>Copyright &copy; 2024 &mdash; All rights reserved</p>
+      <p>Price: &euro;49.99 &plusmn; &euro;5.00</p>
+      <p>Rating: &#9733;&#9733;&#9733;&#9733;&#9734;</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       13. META TAGS
+  ═══════════════════════════════════════â <section id="meta-section">
+    <span class="section-label">Section 13</span>
+    <h2>Meta Tags</h2>
+    <p>Meta tags live inside <code>&lt;head&gt;</code> and are invisible to users. They configure the page for browsers, search engines, and social media platforms.</p>
+
+    <pre><code>&lt;head&gt;
+  &lt;!-- 1. Character encoding — ALWAYS first --&gt;
+  &lt;meta charset="UTF-8"&gt;
+
+  &lt;!-- 2. Mobile responsiveness — ALWAYS include --&gt;
+  &lt;meta name="viewport" content="width=device-width, initiaale=1.0"&gt;
+
+  &lt;!-- 3. Page description (shown in Google search results) --&gt;
+  &lt;meta name="description" content="A portfolio of my web development projects"&gt;
+
+  &lt;!-- 4. Keywords (less important now, but still used) --&gt;
+  &lt;meta name="keywords" content="HTML, CSS, portfolio, web developer"&gt;
+
+  &lt;!-- 5. Author --&gt;
+  &lt;meta name="author" content="Amina Ochieng"&gt;
+
+  &lt;!-- 6. Robots — tell search engines how to handle the page --&gt;
+  &lt;meta name="robots" content="index, llow"&gt;
+
+  &lt;!-- 7. Open Graph (social media sharing) --&gt;
+  &lt;meta property="og:title" content="My Portfolio"&gt;
+  &lt;meta property="og:description" content="See my HTML &amp; CSS projects"&gt;
+  &lt;meta property="og:image" content="https://example.com/preview.jpg"&gt;
+  &lt;meta property="og:url" content="https://myportfolio.com"&gt;
+
+  &lt;!-- 8. Auto-refresh (redirect after 10 seconds) --&gt;
+  &lt;meta http-equiv="refresh" content="10; url=https://example.com"&gt;
+
+  &lt;!-- 9. Link to external CSS --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+
+  &lt;!-- 10. Favicon (browser tab icon) --&gt;
+  &lt;link rel="icon" type="image/png" href="favicon.png"&gt;
+
+  &lt;!-- 11. Page title --&gt;
+  &lt;title&gt;My Portfolio &amp;mdash; Amina Ochieng&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       14. INTERACTIVE & MISC ELEMENTS
+  ════════════════════════════════════════════════ -->
+  <section id="interactive">
+    <span class="section-label">Section 14</span>
+    <h2>Interactive &amp; Miscellaneous Elements</h2>
+
+    <h3>&lt;dialog&gt; &mdash; Modal Popup</h3>
+    <div class="demo">
+      <button class="secondary" onclick="document.getElementById('my-dialog').showModal()">Open Dialog Modal</button>
+      <dialog id="my-dialog">
+        <h3>& from a &lt;dialog&gt;!</h3>
+        <p>This is an HTML <code>&lt;dialog&gt;</code> element. It acts as a modal popup.</p>
+        <p>Attributes: <code>open</code> (makes it visible)</p>
+        <button onclick="document.getElementById('my-dialog').close()">Close Dialog</button>
+      </dialog>
+    </div>
+
+    <h3>&lt;template&gt; &mdash; Hidden Reusable Markup</h3>
+    <div class="demo">
+      <template id="card-template">
+        <div style="border: 2px solid var(--accent2); border-radius:8px; padding:.8rem; margin:.4rem 0;">
+          <h4>Card Title</h4>
+          <p>Card content goes here.</p>
+        </div>
+      </template>
+      <button onclick="
+        const t = document.getElementById('card-template');
+        const clone = t.content.cloneNode(true);
+        clone.querySelector('h4').textContent = 'Cloned Card #' + (document.querySelectorAll('.cloned').length + 1);
+        clone.querySelector('div').classList.add('cloned');
+        document.getElementById('template-output').appendChild(clone);
+      " class="secondary">Clone the &lt;template&gt;</button>
+      <div id="template-output" style="margin-top:.5rem;"></div>
+      <p><small>The <code>&lt;template&gt;</code> content is hidden. JavaScript clones it when needed.</small></p>
+    </div>
+
+    <h3>&lt;canvas&gt; &mdash; Drawing Surface</h3>
+    <div class="demo">
+      <canvas id="demo-canvas" width="400" height="120" style="border:2px solid var(--border); border-radius:8px; display:block;"></canvas>
+      <p><small>Drawn with JavaScript using the <code>&lt;canvas&gt;</code> element.</small></p>
+    </div>
+
+    <h3>&lt;output&gt; &mdash; Calculation Result</h3>
+    <div class="demo">
+      <label>Number 1: <input type="number" id="num1" value="10" style="width:80px; display:inline-block; margin:0 .3rem;" oninput="updateOutput()"></label>
+      &nbsp;+&nbsp;
+      <label>Number 2: <input type="number" id="num2" value="5" style="width:80px; display:inline-block; margin:0 .3rem;" oninput="updateOutput()"></label>
+      &nbsp;=&nbsp;
+      <output id="calc-output" for="num1 num2">15</output>
+    </div>
+
+    <h3>Inline &lt;object&gt; &amp; &lt;embed&gt;</h3>
+    <div class="demo">
+      <p><code>&lt;object&gt;</code> and <code>&lt;embed&gt;</code> are used to embed external resources like PDFs. Example syntax:</p>
+      <pre><code>&lt;!-- Embed a PDF --&gt;
+&lt;object data="document.pdf" type="application/pdf" width="600" height="400"&gt;
+  &lt;p&gt;PDF cannot be displayed. &lt;a href="document.pdf"&gt;Download instead&lt;/a&gt;.&lt;/p&gt;
+&lt;/object&gt;
+
+&lt;!-- Alternative with embed --&gt;
+&lt;embed src="document.pdf" type="application/pdf" width="600" height="400"&gt;</code></pre>
+    </div>
+
+    <h3>All Input Types: Quick Reference</h3>
+    <div class="demo scroll-table">
+      <table>
+        <caption>All HTML Input Types</caption>
+        <thead>
+          <tr><th>type=</th><th>What it shows</th><th>Key extra attributes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>"text"</code></td><td>Single-line text box</td><td>maxlength, minlength, pattern, placeholder</td></tr>
+          <tr><td><code>"email"</code></td><td>Email — validates @ format</td><td>multiple, placeholder</td></tr>
+          <tr><td><code>"password"</code></td><td>Hidden characters</td><td>minlength, maxlength</td></tr>
+          <tr><td><code>"number"</code></td><td>Number with spinner</td><td>min, max, step</td></tr>
+          <tr><td><code>"range"</code></td><td>Slider</td><td>min, max, step, value</td></tr>
+          <tr><td><code>"checkbox"</code></td><td>Tick b</td><td>checked, value</td></tr>
+          <tr><td><code>"radio"</code></td><td>Round option button</td><td>checked, name, value</td></tr>
+          <tr><td><code>"date"</code></td><td>Calendar picker</td><td>min, max</td></tr>
+          <tr><td><code>"time"</code></td><td>Time picker</td><td>min, max, step</td></tr>
+          <tr><td><code>"month"</code></td><td>Year + month picker</td><td>min, max</td></tr>
+          <tr><td><code>"week"</code></td><td>Year + week picker</td><td>min, max</td></tr>
+          <tr><td><code>"color"</code></td><td>Color picker</td><td>value (hex color)</td></tr>
+          <tr><td><code>"file"</code></td><td>File upload button</td><td>accept, multiple</td></tr>
+          <tr><td><code>"search"</code></td><td>Search box (may show ✕)</td><td>placeholder</td></tr>
+          <tr><td><code>"url"</code></td><td>URL — validates https://</td><td>placeholder, pattern</td></tr>
+          <tr><td><code>"tel"</code></td><td>Phone number</td><td>pattern, placeholder</td></tr>
+          <td><code>"submit"</code></td><td>Form submit button</td><td>value (button label)</td></tr>
+          <tr><td><code>"reset"</code></td><td>Clears form fields</td><td>value (button label)</td></tr>
+          <tr><td><code>"button"</code></td><td>Generic button</td><td>value, onclick</td></tr>
+          <tr><td><code>"hidden"</code></td><td>Invisible — sends data</td><td>value, name</td></tr>
+          <tr><td><code>"image"</code></td><td>Image that submits form</td><td>src, alt, width, height</td></tr>
+      </tbody>
+      </table>
+    </div>
+
+    <h3>Complete Semantic Elements Recap</h3>
+    <div class="demo" style="display:flex; flex-wrap:wrap; gap:.4rem;">
+      <span class="chip">&lt;header&gt;</span>
+      <span class="chip">&lt;nav&gt;</span>
+      <span class="chip">&lt;main&gt;</span>
+      <span class="chip">&lt;article&gt;</span>
+      <span class="chip">&lt;section&gt;</span>
+      <span class="chip">&lt;aside&gt;</span>
+      <span class="chip">&lt;footer&gt;</span>
+      <span class="chip">&lt;figure&gt;</span>
+      <span class="chip">&lt;figcaption&gt;</span>
+      <span class="chip">&lt;details&gt;</span>
+      <span class="chip">&lt;summary&gt;</span>
+      <span class="chip">&lt;dialog&gt;</span>
+      <span class="chip">&lt;mark&gt;</span>
+      <span class="chip">&lt;time&gt;</span>
+      <span class="chip">&lt;address&gt;</span>
+      <span class="chip">&lt;blockquote&gt;</span>
+      <span class="chip">&lt;cite&gt;</span>
+      <span class="chip">&lt;abbr&gt;</span>
+      <span class="chip">&lt;template&gt;</span>
+      <span class="chip">&lt;menu&gt;</span>
+      <span class="chip red">&lt;div&gt; (generic)</span>
+      <span class="chip red">&lt;span&gt; (generic)</span>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════
+     SITE FOOTER
+═════════════════════════════════════â════════════ -->
+<footer class="site-footer">
+  <div class="wrapper">
+    <address>
+      <p>Made for students learning HTML &mdash; <a href="mailto:teacher@example.com">teacher@example.com</a></p>
+    </address>
+    <p>
+      <a href="https://freecodecamp.org" target="_blank" rel="noopener noreferrer">freeCodeCamp</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://validator.w3.org" target="_blank" rel="noopener noreferrer">W3C Validator</a>
+      &nbsp;&bull;&nbsp;
+      <a hrefdeveloper.mozilla.org" target="_blank" rel="noopener noreferrer">MDN Web Docs</a>
+    </p>
+    <p><small>&copy; 2024 HTML Reference Showcase &mdash; Open source, use freely &mdash; <a href="#top">Back to top &uarr;</a></small></p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     SCRIPTS (at end of body for performance)
+══════════════════â═════════════════════ -->
+<script>
+  // canvas demo
+  (function() {
+    const canvas = document.getElementById('demo-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(0, 0, 400, 120);
+    const colors = ['#d63a2f','#1a56db','#059669','#fbbf24','#a855f7'];
+    for (let i = 0; i < 5; i++) {
+      ctx.beginPath();
+      ctx.arc(50 + i * 75, 60, 30, 0, Math.PI * 2);
+      ctx.fillStyle = colorstx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 11px Space Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(['rect','arc','path','text','grad'][i], 50 + i * 75, 60);
+    }
+    ctx.fillStyle = '#a5f3fc';
+    ctx.font = '10px Space Mono, monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('Drawn with <canvas> + JavaScript', 8, 112);
+  })();
+
+  // output / calculation demo
+  function updateOutput() {
+    const n1 = parseFloat(document.getElementById('num1').value) || 0;
+    const n2 = parseFloat(document.getElementById('num2').value) || 0;
+    document.getElementById('calc-output').value = n1 + n2;
+  }
+</script>
+
+</body>
+</html>
